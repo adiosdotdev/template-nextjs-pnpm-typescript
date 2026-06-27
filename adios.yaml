@@ -1,0 +1,15 @@
+runtime: node@23
+preset: nextjs
+type: app
+scaffold_cmd: cp -rn /app/. /workspace/
+build_cmd: |
+  pnpm install --frozen-lockfile
+  pnpm run build
+  mkdir -p .next/standalone/.next
+  cp -R public .next/standalone/public
+  cp -R .next/static .next/standalone/.next/static
+start_cmd: HOSTNAME=0.0.0.0 PORT=${PORT:-8080} node .next/standalone/server.js
+env:
+  NODE_ENV: production
+  PORT: "8080"
+  HOSTNAME: 0.0.0.0
