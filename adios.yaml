@@ -1,4 +1,4 @@
-runtime: node@23
+runtime: node@24
 preset: nextjs
 type: app
 scaffold_cmd: cp -rn /app/. /workspace/
