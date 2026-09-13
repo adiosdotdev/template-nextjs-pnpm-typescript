@@ -2,8 +2,9 @@ runtime: node@24
 preset: nextjs
 type: app
 scaffold_cmd: cp -rn /app/. /workspace/
+dependency_cmd: pnpm install --frozen-lockfile
 build_cmd: |
-  pnpm install --frozen-lockfile
+  set -e
   pnpm run build
   mkdir -p .next/standalone/.next
   cp -R public .next/standalone/public
