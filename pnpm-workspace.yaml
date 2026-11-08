@@ -1,3 +1,8 @@
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
+packages:
+  - "."
+
+allowBuilds:
+  unrs-resolver: true
+
+# Match the repository-wide dependency stability policy for direct and transitive packages.
+minimumReleaseAge: 4320

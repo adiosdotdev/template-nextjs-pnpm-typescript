@@ -26,20 +26,24 @@ Links:
 - [Adios quickstart](https://www.adios.dev/docs/quickstart)
 - [Next.js documentation](https://nextjs.org/docs)
 
-## Build with Turbopack
+## Build compiler
 
-The default `build` script uses webpack. To opt in to Turbopack, run:
+The default `build` script uses Turbopack, including deployments through the
+provided `adios.yaml`:
 
 ```bash
-pnpm run build:turbopack
+pnpm run build
 ```
 
-For deployment, change `pnpm run build` to `pnpm run build:turbopack`
-in `adios.yaml`, keeping `set -e` and the standalone asset-copy commands.
-Alternatively, set `scripts.build` to `next build --turbopack` in `package.json`.
-Adios runs your selected command and reports compilation failures.
+`build:turbopack` remains an alias for the same compiler. For applications that
+need webpack plugins or loaders, use:
 
-Applications with custom webpack plugins or loaders should retain webpack until
-their configuration has been adapted and tested with Turbopack. Keep the frozen
-lockfile dependency command and existing package-manager policies when switching
-compilers. No persistent Next.js compiler cache is required.
+```bash
+pnpm run build:webpack
+```
+
+To deploy with webpack, change `pnpm run build` to `pnpm run build:webpack`
+in `adios.yaml`, keeping `set -e` and the standalone asset-copy commands.
+Keep the frozen lockfile dependency command and existing package-manager
+policies when changing compilers. Verify your pages, API routes, CSS and client
+interactions after adapting custom compiler configuration.

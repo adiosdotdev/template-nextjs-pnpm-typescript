@@ -1,4 +1,7 @@
-runtime: node@24
+runtime:
+  name: node@24
+  health_path: /
+  readiness_timeout_seconds: 120
 preset: nextjs
 type: app
 scaffold_cmd: cp -rn /app/. /workspace/
